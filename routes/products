@@ -1,0 +1,11 @@
+var express = require("express");
+var router = express.Router();
+var controller = require("../controllers/product");
+var upload = require("../middlewares/upload");
+
+router.get("/", controller.getAll);
+router.get("/:id", controller.get);
+router.delete("/:id", controller.delete);
+router.post("/", upload.single("image"), controller.post);
+router.put("/:id", upload.single("image"), controller.put);
+module.exports = router;
